@@ -174,21 +174,17 @@ sub metar {
         # Grab METAR report from Web.
         my $agent = new LWP::UserAgent;
         if ( my $proxy = main::getparam('httpproxy') ) {
-            $agent->proxy( 'http', $proxy );
+            $agent->proxy( [ 'http', 'https' ], $proxy );
         }
         $agent->timeout(10);
-        my $grab = new HTTP::Request GET => $metar_url;
-
-        my $reply = $agent->request($grab);
+        my $reply = $agent->get($metar_url);
 
         # If it can't find it, assume luser error :-)
         return "Either $site_id doesn't exist (try a 4-letter station code like KAGC), or the NOAA site is unavailable right now."
           unless $reply->is_success;
 
-        # extract METAR from incredibly and painfully verbose webpage
-        my $webdata = $reply->as_string;
-        $webdata =~ m/($site_id\s\d+Z.*?)</s;
-        my $metar = $1;
+        # current NOAA API returns metar text in response content, no further parsing needed
+        my $metar = $reply->content;
         $metar =~ s/\n//gm;
         $metar =~ s/\s+/ /g;
 
@@ -241,21 +237,18 @@ sub taf {
         # Grab METAR report from Web.
         my $agent = new LWP::UserAgent;
         if ( my $proxy = main::getparam('httpproxy') ) {
-            $agent->proxy( 'http', $proxy );
+            $agent->proxy( [ 'http', 'https' ], $proxy );
         }
         $agent->timeout(10);
-        my $grab = new HTTP::Request GET => $taf_url;
-
-        my $reply = $agent->request($grab);
+        my $reply = $agent->get($taf_url);
 
         # If it can't find it, assume luser error :-)
         return "I can't seem to retrieve data from weather.noaa.com right now."
           unless $reply->is_success;
 
-        # extract TAF from equally verbose webpage
-        my $webdata = $reply->as_string;
-        $webdata =~ m/($site_id( AMD)* \d+Z .*?)</s;
-        my $taf = $1;
+        # extract TAF from response
+        my $taf = $reply->content;
+        $taf =~ m/($site_id( AMD)* \d+Z .*?)</s;
         $taf =~ s/\n//gm;
         $taf =~ s/\s+/ /g;
 
