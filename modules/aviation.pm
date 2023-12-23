@@ -169,7 +169,7 @@ sub metar {
           if $site_id eq 'HELP';
 
         my $metar_url =
-          "http://weather.noaa.gov/cgi-bin/mgetmetar.pl?cccc=$site_id";
+          "https://aviationweather.gov/cgi-bin/data/metar.php?ids=$site_id";
 
         # Grab METAR report from Web.
         my $agent = new LWP::UserAgent;
@@ -236,7 +236,7 @@ sub taf {
           if $site_id eq 'HELP';
 
         my $taf_url =
-          "http://weather.noaa.gov/cgi-bin/mgettaf.pl?cccc=$site_id";
+          "https://aviationweather.gov/cgi-bin/data/taf.php?ids=$site_id";
 
         # Grab METAR report from Web.
         my $agent = new LWP::UserAgent;
@@ -365,13 +365,13 @@ m!^*Name: (.*) IATA: (.*) ICAO: (.*) Latitude: (.*) Longitude: (.*) Elevation: (
             $orig = $1;
             my $lat = $4;
             my $lon = $5;
-            $lat =~ m/(\d+)°(\d+)'\s+(\d+)"\s+(\w+)/;
+            $lat =~ m/(\d+)ï¿½(\d+)'\s+(\d+)"\s+(\w+)/;
             $lat1f =
               ( $1 + ( $2 / 60 ) + ( $3 / 3600 ) ) * ( $pi / 180 );
             if ( $4 =~ m/S/ ) {
                 $lat1f = -$lat1f;
             }
-            $lon =~ m/(\d+)°(\d+)'\s+(\d+)"\s+(\w+)/;
+            $lon =~ m/(\d+)ï¿½(\d+)'\s+(\d+)"\s+(\w+)/;
             $lon1f =
               ( $1 + ( $2 / 60 ) + ( $3 / 3600 ) ) * ( $pi / 180 );
             if ( $4 =~ m/S/ ) {
@@ -388,13 +388,13 @@ m!^*Name: (.*) IATA: (.*) ICAO: (.*) Latitude: (.*) Longitude: (.*) Elevation: (
             $dest = $1;
             my $lat = $4;
             my $lon = $5;
-            $lat =~ m/(\d+)°(\d+)'\s+(\d+)"\s+(\w+)/;
+            $lat =~ m/(\d+)ï¿½(\d+)'\s+(\d+)"\s+(\w+)/;
             $lat2f =
               ( $1 + ( $2 / 60 ) + ( $3 / 3600 ) ) * ( $pi / 180 );
             if ( $4 =~ m/S/ ) {
                 $lat2f = -$lat2f;
             }
-            $lon =~ m/(\d+)°(\d+)'\s+(\d+)"\s+(\w+)/;
+            $lon =~ m/(\d+)ï¿½(\d+)'\s+(\d+)"\s+(\w+)/;
             $lon2f =
               ( $1 + ( $2 / 60 ) + ( $3 / 3600 ) ) * ( $pi / 180 );
             if ( $4 =~ m/S/ ) {
@@ -445,7 +445,7 @@ m!Nautical Miles :\s+(.*)\s+Statute Miles :\s+(.*)\s+Kilometers :\s+(.*)\s+Trip 
             }
         }
         $tc = $tc * ( 180 / $pi );
-        $heading = sprintf "%0.2f°", $tc;
+        $heading = sprintf "%0.2fï¿½", $tc;
 
         my $gcd;
         if ( $speed == 1 ) {
