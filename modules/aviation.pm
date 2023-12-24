@@ -169,26 +169,22 @@ sub metar {
           if $site_id eq 'HELP';
 
         my $metar_url =
-          "http://weather.noaa.gov/cgi-bin/mgetmetar.pl?cccc=$site_id";
+          "https://aviationweather.gov/cgi-bin/data/metar.php?ids=$site_id";
 
         # Grab METAR report from Web.
         my $agent = new LWP::UserAgent;
         if ( my $proxy = main::getparam('httpproxy') ) {
-            $agent->proxy( 'http', $proxy );
+            $agent->proxy( [ 'http', 'https' ], $proxy );
         }
         $agent->timeout(10);
-        my $grab = new HTTP::Request GET => $metar_url;
-
-        my $reply = $agent->request($grab);
+        my $reply = $agent->get($metar_url);
 
         # If it can't find it, assume luser error :-)
         return "Either $site_id doesn't exist (try a 4-letter station code like KAGC), or the NOAA site is unavailable right now."
           unless $reply->is_success;
 
-        # extract METAR from incredibly and painfully verbose webpage
-        my $webdata = $reply->as_string;
-        $webdata =~ m/($site_id\s\d+Z.*?)</s;
-        my $metar = $1;
+        # current NOAA API returns metar text in response content, no further parsing needed
+        my $metar = $reply->content;
         $metar =~ s/\n//gm;
         $metar =~ s/\s+/ /g;
 
@@ -236,26 +232,23 @@ sub taf {
           if $site_id eq 'HELP';
 
         my $taf_url =
-          "http://weather.noaa.gov/cgi-bin/mgettaf.pl?cccc=$site_id";
+          "https://aviationweather.gov/cgi-bin/data/taf.php?ids=$site_id";
 
         # Grab METAR report from Web.
         my $agent = new LWP::UserAgent;
         if ( my $proxy = main::getparam('httpproxy') ) {
-            $agent->proxy( 'http', $proxy );
+            $agent->proxy( [ 'http', 'https' ], $proxy );
         }
         $agent->timeout(10);
-        my $grab = new HTTP::Request GET => $taf_url;
-
-        my $reply = $agent->request($grab);
+        my $reply = $agent->get($taf_url);
 
         # If it can't find it, assume luser error :-)
         return "I can't seem to retrieve data from weather.noaa.com right now."
           unless $reply->is_success;
 
-        # extract TAF from equally verbose webpage
-        my $webdata = $reply->as_string;
-        $webdata =~ m/($site_id( AMD)* \d+Z .*?)</s;
-        my $taf = $1;
+        # extract TAF from response
+        my $taf = $reply->content;
+        $taf =~ m/($site_id( AMD)* \d+Z .*?)</s;
         $taf =~ s/\n//gm;
         $taf =~ s/\s+/ /g;
 
@@ -365,13 +358,13 @@ m!^*Name: (.*) IATA: (.*) ICAO: (.*) Latitude: (.*) Longitude: (.*) Elevation: (
             $orig = $1;
             my $lat = $4;
             my $lon = $5;
-            $lat =~ m/(\d+)°(\d+)'\s+(\d+)"\s+(\w+)/;
+            $lat =~ m/(\d+)ï¿½(\d+)'\s+(\d+)"\s+(\w+)/;
             $lat1f =
               ( $1 + ( $2 / 60 ) + ( $3 / 3600 ) ) * ( $pi / 180 );
             if ( $4 =~ m/S/ ) {
                 $lat1f = -$lat1f;
             }
-            $lon =~ m/(\d+)°(\d+)'\s+(\d+)"\s+(\w+)/;
+            $lon =~ m/(\d+)ï¿½(\d+)'\s+(\d+)"\s+(\w+)/;
             $lon1f =
               ( $1 + ( $2 / 60 ) + ( $3 / 3600 ) ) * ( $pi / 180 );
             if ( $4 =~ m/S/ ) {
@@ -388,13 +381,13 @@ m!^*Name: (.*) IATA: (.*) ICAO: (.*) Latitude: (.*) Longitude: (.*) Elevation: (
             $dest = $1;
             my $lat = $4;
             my $lon = $5;
-            $lat =~ m/(\d+)°(\d+)'\s+(\d+)"\s+(\w+)/;
+            $lat =~ m/(\d+)ï¿½(\d+)'\s+(\d+)"\s+(\w+)/;
             $lat2f =
               ( $1 + ( $2 / 60 ) + ( $3 / 3600 ) ) * ( $pi / 180 );
             if ( $4 =~ m/S/ ) {
                 $lat2f = -$lat2f;
             }
-            $lon =~ m/(\d+)°(\d+)'\s+(\d+)"\s+(\w+)/;
+            $lon =~ m/(\d+)ï¿½(\d+)'\s+(\d+)"\s+(\w+)/;
             $lon2f =
               ( $1 + ( $2 / 60 ) + ( $3 / 3600 ) ) * ( $pi / 180 );
             if ( $4 =~ m/S/ ) {
@@ -445,7 +438,7 @@ m!Nautical Miles :\s+(.*)\s+Statute Miles :\s+(.*)\s+Kilometers :\s+(.*)\s+Trip 
             }
         }
         $tc = $tc * ( 180 / $pi );
-        $heading = sprintf "%0.2f°", $tc;
+        $heading = sprintf "%0.2fï¿½", $tc;
 
         my $gcd;
         if ( $speed == 1 ) {
