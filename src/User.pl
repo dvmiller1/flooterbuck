@@ -413,7 +413,7 @@ sub userProcessing {
                     my $what = $1;
 
                     &postInc( ignore => $what );
-                    &status("ignoring $what at $VerifWho's request");
+                    &status("ignoring $what at ${VerifWho}'s request");
                     &msg( $who, "added $what to the ignore list" );
 
                     return 'NOREPLY';
@@ -435,12 +435,12 @@ sub userProcessing {
 
                     if ( &clear( ignore => $what ) ) {
                         &status(
-                            "unignoring $what at $VerifWho's request");
+                            "unignoring $what at ${VerifWho}'s request");
                         &msg( $who,
                             "removed $what from the ignore list" );
                     } else {
                         &status(
-                            "unignore FAILED for $1 at $who's request");
+                            "unignore FAILED for $1 at ${who}'s request");
                         &msg( $who,
                             "no entry for $1 on the ignore list" );
                     }

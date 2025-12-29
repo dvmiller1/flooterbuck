@@ -27,7 +27,7 @@ $ischan  = "[\#\&].*?";
 $isnick  = "[a-zA-Z]{1}[a-zA-Z0-9\_\-]+";
 
 sub TimerAlarm {
-    &status("$TimerWho's timer ended. sending wakeup");
+    &status("${TimerWho}'s timer ended. sending wakeup");
     &say("$TimerWho: this is your wake up call, foobar.");
 }
 
