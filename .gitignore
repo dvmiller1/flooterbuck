@@ -1,0 +1,6 @@
+*.db
+*.log
+*.out
+*.gz
+!conf/*-dist
+!conf/*.txt
