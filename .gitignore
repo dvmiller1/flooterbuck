@@ -2,5 +2,7 @@
 *.log
 *.out
 *.gz
-!conf/*-dist
-!conf/*.txt
+conf/*.channels
+conf/*.config
+conf/*.help
+conf/*.users
