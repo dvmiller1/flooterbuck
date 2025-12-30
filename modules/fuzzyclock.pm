@@ -142,7 +142,7 @@ sub tzday {
     return $dt->day_name;
 }
 
-sub scan(&$$) {
+sub fuzzyclock::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if (   $message =~ /^\s*what time is it (?:in|for) (.*\w)/i

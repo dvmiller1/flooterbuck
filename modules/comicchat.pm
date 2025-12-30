@@ -4,7 +4,7 @@ use strict;
 
 package comicchat;
 
-sub scan(&$$) {
+sub comicchat::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     # Check $message, if it's what you want, then do stuff with it

@@ -2,7 +2,7 @@ use strict;
 
 package say;
 
-sub scan(&$$) {
+sub say::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $::addressed and &::IsFlag("S") ) {

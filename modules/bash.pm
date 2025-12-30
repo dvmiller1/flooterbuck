@@ -150,7 +150,7 @@ sub bash::get($) {
 # This is the main interface to infobot
 #------------------------------------------------------------------------
 
-sub scan(&$$) {
+sub bash::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     unless ($BASH_LINES_LIMIT) {

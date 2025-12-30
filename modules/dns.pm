@@ -23,7 +23,7 @@ my $DNS_CACHE_EXPIRE_TIME = 7 * 24 * 60 * 60;
 my %DNS_CACHE;
 my %DNS_TIME_CACHE;
 
-sub dns_byname {
+sub dns::dns_byname {
     my $name = $_[0];
     my $result;
 
@@ -36,7 +36,7 @@ sub dns_byname {
     return $result;
 }
 
-sub dns_byaddr {
+sub dns::dns_byaddr {
     my $addr = $_[0];
     my $result;
 
@@ -49,7 +49,7 @@ sub dns_byaddr {
     }
 }
 
-sub dns_getdata {
+sub dns::dns_getdata {
     my $in = $_[0];
     my $result;
 
@@ -74,7 +74,7 @@ sub dns_getdata {
     return $result;
 }
 
-sub get {
+sub dns::get {
     my ( $callback, $addr, $who ) = @_;
 
     $SIG{CHLD} = "IGNORE";
@@ -88,7 +88,7 @@ sub get {
     }
 }
 
-sub scan(&$$) {
+sub dns::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
     if ( $message =~ /^\s*(?:nslookup|dns)(?: for)?\s+(\S+)$/i ) {
         &::status("DNS Lookup: $1");

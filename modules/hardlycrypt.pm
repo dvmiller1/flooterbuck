@@ -10,7 +10,7 @@ use strict;
 package hardlycrypt;
 use List::Util qw/shuffle/;
 
-sub scan(&$$) {
+sub hardlycrypt::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
     if ( $message =~ /^hardlycrypt\s+(.*)/i ) {
         my $reply = hardlycrypt($1);

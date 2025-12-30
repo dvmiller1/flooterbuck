@@ -10,7 +10,7 @@ use strict;
 
 package forget;
 
-sub scan(&$$) {
+sub forget::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $message =~ s/^forget\s+((a|an|the)\s+)?//i ) {

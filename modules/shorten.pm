@@ -126,7 +126,7 @@ sub shorten::get {
 # This is the main interface to infobot
 #------------------------------------------------------------------------
 
-sub scan(&$$) {
+sub shorten::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $message =~ /^\s*(?:shorten)\s+(\w+:\S+)\??/i ) {

@@ -10,7 +10,7 @@ use strict;
 
 package rot13;
 
-sub scan(&$$) {
+sub rot13::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $message =~ /^rot13\s+(.*)/i ) {

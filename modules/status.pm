@@ -9,7 +9,7 @@
 package status;
 use strict;
 
-sub scan(&$$) {
+sub status::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $message =~ /^statu?s/ ) {

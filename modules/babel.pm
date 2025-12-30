@@ -190,7 +190,7 @@ sub translate {
     }
 }
 
-sub scan(&$$) {
+sub babel::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     # compatibility with old infobot syntax

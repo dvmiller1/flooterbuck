@@ -56,7 +56,7 @@ use strict;
 
 package combinatorics;
 
-sub scan(&$$) {
+sub combinatorics::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $message =~ /^\s*(\d*)\s*(\s+factorial|\!)\s*$/i ) {
@@ -103,7 +103,7 @@ sub scan(&$$) {
 #
 # of course, x! == x * (x-1) * (x-2) * ... * 1
 #            x! == 1 when x == 0;
-sub fact($) {
+sub combinatorics::fact($) {
     my $i;
     my $fact = shift();
 

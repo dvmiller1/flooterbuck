@@ -70,7 +70,7 @@ sub get_timediff($) {
     return ( $tstring, $shorttstring );
 }
 
-sub scan(&$$) {
+sub seen::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     # Now with INTENSE CASE INSENSITIVITY!  SUNDAY SUNDAY SUNDAY!

@@ -42,7 +42,7 @@ sub spell {
     return '';
 }
 
-sub scan(&$$) {
+sub spell::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $message =~ /^\s*spell\s+(\S+)\D*$/ ) {

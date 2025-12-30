@@ -7,7 +7,7 @@
 
 package example;
 
-sub scan(&$$) {
+sub example::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $message =~ /^\s*foo\s*$/ ) {

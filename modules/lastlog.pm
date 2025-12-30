@@ -8,7 +8,7 @@ use strict;
 
 package lastlog;
 
-sub scan(&$$) {
+sub lastlog::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $message =~ /^lastlog\W*$/i ) {

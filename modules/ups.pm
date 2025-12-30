@@ -134,7 +134,7 @@ sub ups_getdata($) {
 #
 # This handles the forking (or not) stuff.
 #------------------------------------------------------------------------
-sub get($$) {
+sub ups::get($$) {
     if ($no_ups) {
         &main::status(
             "Sorry, UPS.pl requires LWP and couldn't find it");
@@ -160,7 +160,7 @@ sub get($$) {
 # whether a string delivered to it is a valid ups sequence.
 #------------------------------------------------------------------------
 
-sub scan(&$$) {
+sub ups::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $message =~ /^\s*ups [0-9A-Z]+\??$/ ) {

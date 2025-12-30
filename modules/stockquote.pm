@@ -166,7 +166,7 @@ sub get_index_symbol($) {
 # quote.
 #------------------------------------------------------------------------
 
-sub scan(&$$) {
+sub stockquote::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
     my ($symbol);
 

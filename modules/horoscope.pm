@@ -125,7 +125,7 @@ sub horoscope_getdata($) {
 # This is the main interface to infobot
 #------------------------------------------------------------------------
 
-sub scan(&$$) {
+sub horoscope::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     # don't complain dagbrown.

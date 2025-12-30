@@ -10,7 +10,7 @@ use strict;
 
 package joinleave;
 
-sub scan(&$$) {
+sub joinleave::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if (    $message =~ /^join ([\&\#]\S+)(?:\s+(\S+))?$/i

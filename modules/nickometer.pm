@@ -225,7 +225,7 @@ sub punish ($$) {
 # This is the main interface to infobot
 #------------------------------------------------------------------------
 
-sub scan(&$$) {
+sub nickometer::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
     if ( $message =~ /^\s*(?:lame|nick)-?o-?meter(?: for)? (\S+)/i ) {
         my $term = $1;

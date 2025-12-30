@@ -8,7 +8,7 @@
 package factoids;
 use strict;
 
-sub scan(&$$) {
+sub factoids::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
     if (
             $::addressed
