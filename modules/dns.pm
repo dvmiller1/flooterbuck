@@ -23,7 +23,7 @@ my $DNS_CACHE_EXPIRE_TIME = 7 * 24 * 60 * 60;
 my %DNS_CACHE;
 my %DNS_TIME_CACHE;
 
-sub dns::dns_byname {
+sub dns_byname {
     my $name = $_[0];
     my $result;
 
@@ -36,7 +36,7 @@ sub dns::dns_byname {
     return $result;
 }
 
-sub dns::dns_byaddr {
+sub dns_byaddr {
     my $addr = $_[0];
     my $result;
 
@@ -49,7 +49,7 @@ sub dns::dns_byaddr {
     }
 }
 
-sub dns::dns_getdata {
+sub dns_getdata {
     my $in = $_[0];
     my $result;
 
