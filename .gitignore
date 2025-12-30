@@ -2,6 +2,7 @@
 *.log
 *.out
 *.gz
+modules-enabled/
 conf/*.channels
 conf/*.config
 conf/*.help
