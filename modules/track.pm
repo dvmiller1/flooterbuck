@@ -125,4 +125,4 @@ sub track::scan(&$$) {
     }
 }
 
-return "track";
+"track";

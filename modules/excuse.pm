@@ -35,8 +35,6 @@ sub excuse::scan(&$$) {
     return 1;
 }
 
-"excuse";
-
 __DATA__
 clock speed
 solar flares

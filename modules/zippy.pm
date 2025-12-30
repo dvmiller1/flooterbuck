@@ -39,8 +39,6 @@ sub zippy::scan(&$$) {
     return 1;
 }
 
-"zippy";
-
 =pod
 
 =head1 NAME

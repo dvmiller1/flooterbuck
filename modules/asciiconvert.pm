@@ -47,8 +47,6 @@ sub asciiconvert::scan(&$$) {
     return undef;
 }
 
-"asciiconvert";
-
 __END__
 
 =head1 NAME

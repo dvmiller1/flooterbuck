@@ -74,8 +74,6 @@ sub help::help_scan {
     }
 }
 
-"help";
-
 __END__
 
 =head1 NAME
