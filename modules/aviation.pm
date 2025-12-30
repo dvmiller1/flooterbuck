@@ -44,6 +44,7 @@ package aviation;
 
 my ( $no_aviation, $no_entities, $no_posix, $no_parsing );
 my $pi = 3.1415926535;
+my $aviation_weather_base_url = 'https://aviationweather.gov/api/data';
 
 BEGIN {
     eval "use LWP::UserAgent";
@@ -169,7 +170,7 @@ sub metar {
           if $site_id eq 'HELP';
 
         my $metar_url =
-          "https://aviationweather.gov/cgi-bin/data/metar.php?ids=$site_id";
+          "$aviation_weather_base_url/metar?ids=$site_id";
 
         # Grab METAR report from Web.
         my $agent = new LWP::UserAgent;
@@ -232,7 +233,7 @@ sub taf {
           if $site_id eq 'HELP';
 
         my $taf_url =
-          "https://aviationweather.gov/cgi-bin/data/taf.php?ids=$site_id";
+          "$aviation_weather_base_url/taf?ids=$site_id";
 
         # Grab METAR report from Web.
         my $agent = new LWP::UserAgent;
@@ -248,8 +249,6 @@ sub taf {
 
         # extract TAF from response
         my $taf = $reply->content;
-        $taf =~ m/($site_id( AMD)* \d+Z .*?)</s;
-        $taf =~ s/\n//gm;
         $taf =~ s/\s+/ /g;
 
      # Optionally highlight beginnings of parts of the forecast. Some
