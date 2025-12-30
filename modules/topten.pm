@@ -48,7 +48,7 @@ use strict;
 
 package topten;
 
-sub scan(&$$) {
+sub topten::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     # Now with INTENSE CASE INSENSITIVITY!  SUNDAY SUNDAY SUNDAY!

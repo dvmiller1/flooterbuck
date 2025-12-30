@@ -149,7 +149,7 @@ sub tinyurl::get($$) {
 # This is the main interface to infobot
 #------------------------------------------------------------------------
 
-sub scan(&$$) {
+sub tinyurl::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( ::getparam('tinyurl')

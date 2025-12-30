@@ -9,7 +9,7 @@ BEGIN {
     # eval your "use"ed modules here
 }
 
-sub scan(&$$) {
+sub help::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     # Check $message, if it's what you want, then do stuff with it
@@ -59,11 +59,11 @@ sub scan(&$$) {
     return undef;
 }
 
-sub help {
+sub help::help {
     return "If you say help <modulename>, it will explain what the module does, and briefly tell you how to use it.";
 }
 
-sub help_scan {
+sub help::help_scan {
     my $message = shift;
 
     if ( $message =~ /help\s+(index|modules)?\s*$/ ) {
@@ -73,8 +73,6 @@ sub help_scan {
         return q{Hi, I'm a Flooterbuck infobot. I learn mainly by observing declarative statements such as "x is at http://www.xxx.com", and then reply when people ask things like "Where can I find x?" For a list of the other things I can do, ask me about 'help index'.};
     }
 }
-
-"help";
 
 __END__
 

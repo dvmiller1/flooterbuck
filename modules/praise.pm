@@ -19,7 +19,7 @@ my @welcomes = (
     'pas de quoi'
 );
 
-sub scan(&$$) {
+sub praise::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
   # Gotta be gender-neutral here... we're sensitive to purl's needs. :-)

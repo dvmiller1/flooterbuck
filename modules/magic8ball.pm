@@ -10,7 +10,7 @@ package magic8ball;
 
 my @m8_answers;
 
-sub scan(&$$) {
+sub magic8ball::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     # divine added routine (boojum++)

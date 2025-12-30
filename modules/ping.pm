@@ -66,7 +66,7 @@ sub ping {
 
 }
 
-sub scan(&$$) {
+sub ping::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $message =~ /^\s*ping\s+(\S+)\D*$/ ) {

@@ -246,7 +246,7 @@ sub parse_flightdata {
 # This is the main interface to infobot
 #------------------------------------------------------------------------
 
-sub scan(&$$) {
+sub flighttracker::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( ::getparam('flighttracker')

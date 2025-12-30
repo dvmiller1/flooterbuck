@@ -10,7 +10,7 @@
 
 package debug;
 
-sub scan(&$$) {
+sub debug::scan(&$$) {
     my $callback = shift;
     my $message  = shift;
     my $who      = shift;

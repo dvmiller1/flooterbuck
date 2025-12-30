@@ -74,7 +74,7 @@ sub dns_getdata {
     return $result;
 }
 
-sub get {
+sub dns::get {
     my ( $callback, $addr, $who ) = @_;
 
     $SIG{CHLD} = "IGNORE";
@@ -88,7 +88,7 @@ sub get {
     }
 }
 
-sub scan(&$$) {
+sub dns::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
     if ( $message =~ /^\s*(?:nslookup|dns)(?: for)?\s+(\S+)$/i ) {
         &::status("DNS Lookup: $1");

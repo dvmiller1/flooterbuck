@@ -8,7 +8,7 @@ use strict;
 
 package karma;
 
-sub scan(&$$) {
+sub karma::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( ::getparam('plusplus') ) {

@@ -93,7 +93,7 @@ sub exchange {
     return "Um, something bad has happened.";
 }
 
-sub scan(&$$) {
+sub exchange::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     # currency exchanger, bobby@bofh.dk

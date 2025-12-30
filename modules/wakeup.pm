@@ -8,7 +8,7 @@ use strict;
 
 package wakeup;
 
-sub scan(&$$) {
+sub wakeup::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     # Aldebaran++ !

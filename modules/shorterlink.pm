@@ -168,7 +168,7 @@ sub shorterlink::get($$) {
 # This is the main interface to infobot
 #------------------------------------------------------------------------
 
-sub scan(&$$) {
+sub shorterlink::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $message =~ /^\s*shorterlink\s+(\w+:\S+)/i ) {

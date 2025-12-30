@@ -17,7 +17,7 @@ my @hello = (
     'privet',  "what's up"
 );
 
-sub scan(&$$) {
+sub greeting::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if (

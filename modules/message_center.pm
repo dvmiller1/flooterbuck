@@ -125,7 +125,7 @@ sub preprocess {
     have_message($who);
 }
 
-sub scan(&$$) {
+sub message_center::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     # Check $message, if it's what you want, then do stuff with it

@@ -115,7 +115,7 @@ sub track_getdata($) {
 # This is the main interface to infobot
 #------------------------------------------------------------------------
 
-sub scan(&$$) {
+sub track::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( ::getparam('track') and $message =~ /^\s*track\s+(.+)$/i ) {
@@ -125,4 +125,4 @@ sub scan(&$$) {
     }
 }
 
-return "track";
+"track";

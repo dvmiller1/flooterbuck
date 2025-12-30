@@ -17,7 +17,7 @@ my $no_excuse;
 
 my @excuses;
 
-sub scan(&$$) {
+sub excuse::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     unless ( $message =~ /\bexcuse\b/ ) {
@@ -34,8 +34,6 @@ sub scan(&$$) {
     $callback->($excuse);
     return 1;
 }
-
-"excuse";
 
 __DATA__
 clock speed

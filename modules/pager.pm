@@ -11,7 +11,7 @@ BEGIN {
     $no_mail++ if ($@);
 }
 
-sub scan(&$$) {
+sub pager::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     unless ( $message =~ /^page\s+(\S+)\s+(.*)$/ ) {

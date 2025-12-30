@@ -113,7 +113,7 @@ s|.*?<TD ALIGN[^>]*>(?:\s*<[^>]+>)*\s+([^<]+?)\s+<.*?<TD>(?:\s*<[^>]+>)*\s+([^<]
     }
 }
 
-sub scan (&$$) {
+sub weather::scan (&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( ::getparam('weather')
