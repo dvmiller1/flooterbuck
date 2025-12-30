@@ -11,7 +11,7 @@ package zippy;
 
 my $no_zippy;  # Can't think of any situation in which this won't work..
 
-sub scan(&$$) {
+sub zippy::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     unless ( $message =~ /^yow[!? ]*$/i

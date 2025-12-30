@@ -9,7 +9,7 @@ use strict;
 
 package asciiconvert;
 
-sub scan(&$$) {
+sub asciiconvert::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( ::getparam('allowConv') ) {

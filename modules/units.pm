@@ -594,7 +594,7 @@ sub token_value {
     return $token;    # Perl takes care of the others.
 }
 
-sub scan(&$$) {
+sub units::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $message =~ /^convert\s+(.*?)\s+(in)?to\s+(.+?)\s*$/ ) {
@@ -669,7 +669,7 @@ BEGIN {
     }
 }
 
-sub WARRANTY {
+sub units::WARRANTY {
     print <<EOM
   11. BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
 FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.  EXCEPT WHEN
@@ -693,7 +693,7 @@ POSSIBILITY OF SUCH DAMAGES.
 EOM
 }
 
-sub COPYING {
+sub units::COPYING {
     print <<EOM;
 		    GNU GENERAL PUBLIC LICENSE
 		       Version 2, June 1991

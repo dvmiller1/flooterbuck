@@ -318,7 +318,7 @@ sub ebay::get($$) {
 # This is the main interface to infobot
 #------------------------------------------------------------------------
 
-sub scan(&$$) {
+sub ebay::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( ::getparam('ebay') and $message =~ /^\s*ebay\s+(\S+)\s*$/i ) {
@@ -332,7 +332,7 @@ sub scan(&$$) {
 # And the help text
 #------------------------------------------------------------------------
 
-sub help {
+sub ebay::help {
 q(Say "ebay" and then a number, and I'll summarize that auction for you.  If someone pasted an eBay URL recently, you can say "ebay that" and I'll summarize.);
 }
 

@@ -17,7 +17,7 @@ my $no_excuse;
 
 my @excuses;
 
-sub scan(&$$) {
+sub excuse::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     unless ( $message =~ /\bexcuse\b/ ) {

@@ -8,7 +8,7 @@
 
 package reset;
 
-sub scan(&$$) {
+sub reset::scan(&$$) {
 
     my ( $callback, $message, $who ) = @_;
 

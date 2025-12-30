@@ -9,7 +9,7 @@ BEGIN {
     # eval your "use"ed modules here
 }
 
-sub scan(&$$) {
+sub help::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     # Check $message, if it's what you want, then do stuff with it
@@ -59,11 +59,11 @@ sub scan(&$$) {
     return undef;
 }
 
-sub help {
+sub help::help {
     return "If you say help <modulename>, it will explain what the module does, and briefly tell you how to use it.";
 }
 
-sub help_scan {
+sub help::help_scan {
     my $message = shift;
 
     if ( $message =~ /help\s+(index|modules)?\s*$/ ) {

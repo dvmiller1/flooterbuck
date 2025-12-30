@@ -163,7 +163,7 @@ sub slnk::get {
 # This is the main interface to infobot
 #------------------------------------------------------------------------
 
-sub scan(&$$) {
+sub slnk::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     if ( $message =~ /^\s*(?:un)?(?:slnk|fcol|xev)\s+(\w+:\S+)\??/i ) {
@@ -179,7 +179,7 @@ sub scan(&$$) {
     }
 }
 
-sub help {
+sub slnk::help {
     return "If you ask me slnk http://really-long-url/, I will shorten it for you on slnk.org.  You can ask me to unshorten a slnk url with unslnk http://short-url/.";
 }
 

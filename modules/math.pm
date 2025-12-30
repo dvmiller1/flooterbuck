@@ -49,7 +49,7 @@ BEGIN {
     }
 }
 
-sub scan(&$$) {
+sub math::scan(&$$) {
     my ( $callback, $message, $who ) = @_;
 
     foreach $x ( keys %digits ) {
