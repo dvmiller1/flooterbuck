@@ -193,6 +193,13 @@ sub process {
         $correction_plausible = 0;
     }
 
+    # Strip IRC client-style prefixes like "[timestamp] <nick> message"
+    # This makes addressing through proxy bots (like for Discord) work better.
+    if ( $message =~ s/^(?:.*?)<\S+>\s+// ) {
+        &status("Stripped IRC-style prefix, new message is: $message");
+        study $message;
+    }
+
     if ( $message =~ /^\s*$param{'nick'}\s*\?*$/i ) {
         &status("feedback addressing from $who");
         $addressed = 1;
@@ -508,4 +515,3 @@ sub process {
 }
 
 1;
-
