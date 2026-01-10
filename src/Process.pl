@@ -193,9 +193,9 @@ sub process {
         $correction_plausible = 0;
     }
 
-    # Strip IRC client-style prefixes like "<foo> message"
-    # makes addressing through Discord proxy bot work
-    if ( $message =~ s/^<\S+>\s+// ) {
+    # Strip IRC client-style prefixes like "[timestamp] <nick> message"
+    # This makes addressing through proxy bots (like for Discord) work better.
+    if ( $message =~ s/^(?:.*?)<\S+>\s+// ) {
         &status("Stripped IRC-style prefix, new message is: $message");
         study $message;
     }
